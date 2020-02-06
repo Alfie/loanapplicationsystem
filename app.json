@@ -1,0 +1,5 @@
+{
+  "name": "Loan Application",
+  "description": "A barebones Java app, to input and view loan applications and follow ups",
+  "addons": [ "heroku-postgresql" ]
+}
