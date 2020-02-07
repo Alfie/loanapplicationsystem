@@ -41,7 +41,7 @@ public class DatabaseController {
       Statement stmt = connection.createStatement();
       //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
 	    try {
-		executeScriptUsingStatement(connection, fp);
+		executeScriptUsingStatement(stmt, fp);
 	} catch (IOException e) {
 		e.printStackTrace();
 	} catch (SQLException e) {
@@ -75,7 +75,7 @@ public class DatabaseController {
     }
   }
 
-   static void executeScriptUsingStatement(Connection con, String filepath ) throws IOException, SQLException {
+   static void executeScriptUsingStatement(Statement statement, String filepath ) throws IOException, SQLException {
 	String scriptFilePath = filepath;
 	BufferedReader reader = null;
 	Statement statement = null;
@@ -83,7 +83,7 @@ public class DatabaseController {
 		// load driver class for mysql
 		//Class.forName("com.mysql.jdbc.Driver");
 		// create statement object
-		statement = con.createStatement();
+		//statement = con.createStatement();
 		// initialize file reader
 		reader = new BufferedReader(new FileReader(filepath));
 		String line = null;
