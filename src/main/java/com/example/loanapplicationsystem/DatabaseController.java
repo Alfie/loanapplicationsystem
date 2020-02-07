@@ -41,7 +41,7 @@ public class DatabaseController {
       Statement stmt = connection.createStatement();
       //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
 	    try {
-		executeScriptUsingStatement(connection);
+		executeScriptUsingStatement(connection, fp);
 	} catch (IOException e) {
 		e.printStackTrace();
 	} catch (SQLException e) {
@@ -75,7 +75,8 @@ public class DatabaseController {
     }
   }
 
-   static void executeScriptUsingStatement(Connection con) throws IOException, SQLException {
+   static void executeScriptUsingStatement(Connection con, String filepath ) throws IOException, SQLException {
+	String scriptFilePath = filepath;
 	BufferedReader reader = null;
 	Statement statement = null;
 	try {
