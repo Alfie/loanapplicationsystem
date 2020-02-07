@@ -40,14 +40,8 @@ public class DatabaseController {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-	    try {
-		executeScriptUsingStatement(stmt, fp);
-	} catch (IOException e) {
-		e.printStackTrace();
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
       //stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
+      stmt.executeUpdate("DELETE FROM ticks");
       stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
 
@@ -74,35 +68,4 @@ public class DatabaseController {
       return new HikariDataSource(config);
     }
   }
-
-   static void executeScriptUsingStatement(Statement statement, String filepath ) throws IOException, SQLException {
-	String scriptFilePath = filepath;
-	BufferedReader reader = null;
-	//Statement statement = null;
-	try {
-		// load driver class for mysql
-		//Class.forName("com.mysql.jdbc.Driver");
-		// create statement object
-		//statement = con.createStatement();
-		// initialize file reader
-		reader = new BufferedReader(new FileReader(filepath));
-		String line = null;
-		// read script line by line
-		while ((line = reader.readLine()) != null) {
-			// execute query
-			statement.execute(line);
-		}
-	} catch (Exception e) {
-		e.printStackTrace();
-	} finally {
-		// close file reader
-		if (reader != null) {
-			reader.close();
-		}
-		// close db connection
-		//if (con != null) {
-		//	con.close();
-		//}
-	}
-   }
 }
