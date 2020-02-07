@@ -28,6 +28,6 @@ public class WebController implements WebMvcConfigurer {
 			return "form";
 		}
 
-		return "redirect:/results";
+		return "redirect:/db";
 	}
 }
