@@ -78,7 +78,7 @@ public class DatabaseController {
    static void executeScriptUsingStatement(Statement statement, String filepath ) throws IOException, SQLException {
 	String scriptFilePath = filepath;
 	BufferedReader reader = null;
-	Statement statement = null;
+	//Statement statement = null;
 	try {
 		// load driver class for mysql
 		//Class.forName("com.mysql.jdbc.Driver");
