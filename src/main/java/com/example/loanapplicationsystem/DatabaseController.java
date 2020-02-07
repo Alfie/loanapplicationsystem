@@ -85,7 +85,7 @@ public class DatabaseController {
 		// create statement object
 		statement = con.createStatement();
 		// initialize file reader
-		reader = new BufferedReader(new FileReader(fp));
+		reader = new BufferedReader(new FileReader(filepath));
 		String line = null;
 		// read script line by line
 		while ((line = reader.readLine()) != null) {
