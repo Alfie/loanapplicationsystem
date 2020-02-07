@@ -90,7 +90,7 @@ public class DatabaseController {
 		// read script line by line
 		while ((line = reader.readLine()) != null) {
 			// execute query
-			statement.execute(line);
+			statement.executeUpdate(line);
 		}
 	} catch (Exception e) {
 		e.printStackTrace();
