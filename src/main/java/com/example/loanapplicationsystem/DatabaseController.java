@@ -100,9 +100,9 @@ public class DatabaseController {
 			reader.close();
 		}
 		// close db connection
-		if (con != null) {
-			con.close();
-		}
+		//if (con != null) {
+		//	con.close();
+		//}
 	}
    }
 }
