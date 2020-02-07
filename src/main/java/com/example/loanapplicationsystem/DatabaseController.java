@@ -3,6 +3,11 @@ package com.example.loanapplicationsystem;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.DriverManager;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -23,6 +28,9 @@ public class DatabaseController {
   
   @Value("${spring.datasource.url}")
   private String dbUrl;
+	
+  @Value("classpath:schema.sql")
+  private String fp;
 
   @Autowired
   private DataSource dataSource;
@@ -31,7 +39,14 @@ public class DatabaseController {
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
+      //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
+	    try {
+		executeScriptUsingStatement(connection);
+	} catch (IOException e) {
+		e.printStackTrace();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
       //stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
       stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
@@ -59,4 +74,35 @@ public class DatabaseController {
       return new HikariDataSource(config);
     }
   }
+
+   static void executeScriptUsingStatement(Connection con) throws IOException, SQLException {
+	String scriptFilePath = fp;
+	BufferedReader reader = null;
+	Statement statement = null;
+	try {
+		// load driver class for mysql
+		//Class.forName("com.mysql.jdbc.Driver");
+		// create statement object
+		statement = con.createStatement();
+		// initialize file reader
+		reader = new BufferedReader(new FileReader(scriptFilePath));
+		String line = null;
+		// read script line by line
+		while ((line = reader.readLine()) != null) {
+			// execute query
+			statement.execute(line);
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		// close file reader
+		if (reader != null) {
+			reader.close();
+		}
+		// close db connection
+		if (con != null) {
+			con.close();
+		}
+	}
+   }
 }
