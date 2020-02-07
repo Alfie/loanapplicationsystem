@@ -1,4 +1,4 @@
-package com.example.validatingforminput;
+package com.example.loanapplicationsystem;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
