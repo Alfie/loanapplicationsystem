@@ -76,7 +76,6 @@ public class DatabaseController {
   }
 
    static void executeScriptUsingStatement(Connection con) throws IOException, SQLException {
-	String scriptFilePath = fp;
 	BufferedReader reader = null;
 	Statement statement = null;
 	try {
@@ -85,7 +84,7 @@ public class DatabaseController {
 		// create statement object
 		statement = con.createStatement();
 		// initialize file reader
-		reader = new BufferedReader(new FileReader(scriptFilePath));
+		reader = new BufferedReader(new FileReader(fp));
 		String line = null;
 		// read script line by line
 		while ((line = reader.readLine()) != null) {
