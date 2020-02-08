@@ -9,7 +9,12 @@
   <ul th:each="record : ${records}">
     <li th:text="${record}"/>
   </ul>
+  
 </div>
 
+  <tr th:each="loan: ${loans}">
+        <td th:text="${loan.name}" />
+    </tr>
+  
 </body>
 </html>
