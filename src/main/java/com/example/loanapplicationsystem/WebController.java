@@ -17,12 +17,12 @@ public class WebController implements WebMvcConfigurer {
 	}
 
 	@GetMapping("/")
-	public String showForm(PersonForm personForm) {
+	public String showForm(Loan loan) {
 		return "form";
 	}
 
 	@PostMapping("/")
-	public String checkPersonInfo(@Valid PersonForm personForm, BindingResult bindingResult) {
+	public String checkPersonInfo(@Valid Loan loan, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return "form";
