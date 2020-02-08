@@ -37,7 +37,11 @@ public class DatabaseController {
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-
+	  
+	//Database Schema
+	//Create table for loan data
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS loan (name TEXT)");
+	    
       ArrayList<String> output = new ArrayList<String>();
       while (rs.next()) {
         output.add("Read from DB: " + rs.getTimestamp("tick"));
