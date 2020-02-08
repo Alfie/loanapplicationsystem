@@ -12,9 +12,9 @@
   
 </div>
 
-  <tr th:each="loan: ${loans}">
-        <td th:text="${loan.name}" />
-    </tr>
+  <ul th:each="loan: ${loans}">
+        <li th:text="${loan.name}" />
+    </ul>
   
 </body>
 </html>
