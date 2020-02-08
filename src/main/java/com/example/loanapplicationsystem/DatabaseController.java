@@ -3,11 +3,6 @@ package com.example.loanapplicationsystem;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.DriverManager;
-
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -34,14 +29,12 @@ public class DatabaseController {
 
   @Autowired
   private DataSource dataSource;
-  
+	
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-      //stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
-      stmt.executeUpdate("DELETE FROM ticks");
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
 
