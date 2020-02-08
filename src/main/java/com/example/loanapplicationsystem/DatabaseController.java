@@ -38,9 +38,6 @@ public class DatabaseController {
       stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
 	  
-	//Database Schema
-	//Create table for loan data
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS loan (name TEXT)");
 	    
       ArrayList<String> output = new ArrayList<String>();
       while (rs.next()) {
@@ -48,6 +45,11 @@ public class DatabaseController {
       }
 
       model.put("records", output);
+	    
+	//Database Schema
+	//Create table for loan data
+      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS loan (name TEXT)");
+	    
       return "db";
     } catch (Exception e) {
       model.put("message", e.getMessage());
