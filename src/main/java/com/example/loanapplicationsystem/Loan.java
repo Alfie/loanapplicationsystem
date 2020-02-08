@@ -4,7 +4,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class PersonForm {
+public class Loan {
 
 	@NotNull
 	@Size(min=2, max=30)
