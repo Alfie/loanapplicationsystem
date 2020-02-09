@@ -52,8 +52,8 @@ public class DatabaseController {
 	//Create table for loan data
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS loan (name TEXT)");
 	    
-      List<Loan> loans = service.listAll();
-      model.put("loans", loans);
+      //List<Loan> loans = service.listAll();
+      //model.put("loans", loans);
 	    
       return "db";
     } catch (Exception e) {
