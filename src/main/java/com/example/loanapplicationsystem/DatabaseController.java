@@ -25,6 +25,9 @@ public class DatabaseController {
   
   @Value("${spring.datasource.url}")
   private String dbUrl;
+	
+  @Autowired
+  private LoanService service;
 
   @Autowired
   private DataSource dataSource;
