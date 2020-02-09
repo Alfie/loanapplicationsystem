@@ -20,6 +20,8 @@ public class Loan {
 	@Min(18)
 	private Integer age;
 	
+	private Long id;
+	
 	@Id
     	@GeneratedValue(strategy = GenerationType.IDENTITY)
     	public Long getId() {
