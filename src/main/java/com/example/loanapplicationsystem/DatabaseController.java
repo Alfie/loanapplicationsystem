@@ -23,9 +23,6 @@ public class DatabaseController {
   
   @Value("${spring.datasource.url}")
   private String dbUrl;
-	
-  @Value("classpath:schema.sql")
-  private String fp;
 
   @Autowired
   private DataSource dataSource;
