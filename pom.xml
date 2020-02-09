@@ -63,8 +63,8 @@
     
     <dependency>
       <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>5.2.12.Final</version>
+      <artifactId>hibernate-hikaricp</artifactId>
+      <version>5.2.6.Final</version>
     </dependency>
     
     <dependency>
