@@ -62,6 +62,7 @@ public class DatabaseController {
     }
   }
 	
+	/*
   @Bean
   public DataSource dataSource() throws SQLException {
     if (dbUrl == null || dbUrl.isEmpty()) {
@@ -71,5 +72,5 @@ public class DatabaseController {
       config.setJdbcUrl(dbUrl);
       return new HikariDataSource(config);
     }
-  }
+  }*/
 }
