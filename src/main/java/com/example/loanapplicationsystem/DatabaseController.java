@@ -53,7 +53,7 @@ public class DatabaseController {
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS loan (name TEXT)");
 	    
       List<Loan> loans = service.listAll();
-      model.addAttribute("loans", loans);
+      model.put("loans", loans);
 	    
       return "db";
     } catch (Exception e) {
