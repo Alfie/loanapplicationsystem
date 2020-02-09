@@ -27,4 +27,11 @@ public class LoanService {
     public void delete(long id) {
         repo.deleteById(id);
     }
+ 
+    @Bean(name="entityManagerFactory")
+    public LocalSessionFactoryBean sessionFactory() {
+       LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+
+       return sessionFactory;
+    } 
 }
