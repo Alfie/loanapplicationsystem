@@ -28,7 +28,7 @@ public class Loan {
         	return id;
     	}
 	
-	public Long setId(String id) {
+	public void setId(Long id) {
         	 this.id = id;
     	}
 	
