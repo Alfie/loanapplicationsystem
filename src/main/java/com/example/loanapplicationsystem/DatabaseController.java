@@ -36,7 +36,7 @@ public class DatabaseController {
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
+      //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
 	  
@@ -50,7 +50,7 @@ public class DatabaseController {
 	    
 	//Database Schema
 	//Create table for loan data
-      stmt.executeUpdate("CREATE TABLE IF NOT EXISTS loan (name TEXT)");
+      //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS loan (name TEXT)");
 	    
       //List<Loan> loans = service.listAll();
       //model.put("loans", loans);
