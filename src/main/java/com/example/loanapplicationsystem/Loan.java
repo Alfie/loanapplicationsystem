@@ -28,6 +28,10 @@ public class Loan {
         	return id;
     	}
 	
+	public Long setId(String id) {
+        	 this.id = id;
+    	}
+	
 	protected Loan() {
     	}
 
